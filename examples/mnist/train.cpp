@@ -119,7 +119,7 @@ static void train_lenet(const std::string &data_dir_path,
   // test and show results
   nn.test(test_images, test_labels).print_detail(std::cout);
   // save network model & trained weights
-  nn.save("LeNet-model");
+  nn.save("LeNet-model", content_type::weights_and_model, file_format::json);
 }
 
 static tiny_dnn::core::backend_t parse_backend_name(const std::string &name) {
