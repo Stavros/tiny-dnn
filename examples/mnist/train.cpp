@@ -68,6 +68,10 @@ static void train_lenet(const std::string &data_dir_path,
   tiny_dnn::network<tiny_dnn::sequential> nn;
   tiny_dnn::adagrad optimizer;
 
+  // content_type & file_format
+  //tiny_dnn::content_type con_type=model;
+  //tiny_dnn::file_format fil_format=json;
+
   construct_net(nn, backend_type);
 
   std::cout << "load models..." << std::endl;
@@ -119,7 +123,8 @@ static void train_lenet(const std::string &data_dir_path,
   // test and show results
   nn.test(test_images, test_labels).print_detail(std::cout);
   // save network model & trained weights
-  nn.save("LeNet-model", content_type::weights_and_model, file_format::json);
+  //content_type con_type=weights_and_model;
+  nn.save("LeNet-model", tiny_dnn::content_type::weights_and_model, tiny_dnn::file_format::json);
 }
 
 static tiny_dnn::core::backend_t parse_backend_name(const std::string &name) {
