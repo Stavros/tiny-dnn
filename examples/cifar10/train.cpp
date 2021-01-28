@@ -101,8 +101,9 @@ void train_cifar10(std::string data_dir_path,
   // test and show results
   nn.test(test_images, test_labels).print_detail(std::cout);
   // save networks
-  std::ofstream ofs("cifar-weights");
-  ofs << nn;
+  //std::ofstream ofs("cifar-weights");
+  nn.save("cifar10-model-weights", tiny_dnn::content_type::weights_and_model, tiny_dnn::file_format::json);
+  //ofs << nn;
 }
 
 static tiny_dnn::core::backend_t parse_backend_name(const std::string &name) {
